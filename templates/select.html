@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Chats</title>
+  <style>
+    body { font-family: Arial; background: #fff; text-align: center; padding: 40px; }
+    select, input, button { margin: 10px; padding: 8px; width: 250px; }
+  </style>
+</head>
+<body>
+  <h2>🔗 Select Chats for Forwarding</h2>
+  <form method="POST">
+    <label>From Chat:</label><br>
+    <select name="from_chat" required>
+      {% for id, name in chats %}
+        <option value="{{ id }}">{{ name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <label>To Chat:</label><br>
+    <select name="to_chat" required>
+      {% for id, name in chats %}
+        <option value="{{ id }}">{{ name }}</option>
+      {% endfor %}
+    </select><br>
+
+    <input type="text" name="keyword" placeholder="Keyword Filter (optional)"><br>
+    <label>Delay (minutes):</label>
+    <select name="delay">
+      <option value="3">3</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+    </select><br>
+
+    <button type="submit">Start Bot</button>
+  </form>
+</body>
+</html>
