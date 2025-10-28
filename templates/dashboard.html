@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <style>
+    body { font-family: Arial; background: #f9f9f9; text-align: center; padding: 40px; }
+    input, button { margin: 10px; padding: 8px; width: 250px; }
+    button { background: #28a745; color: white; border: none; cursor: pointer; }
+    .stop { background: #dc3545; }
+    #logs { background: #fff; width: 80%; margin: 20px auto; border: 1px solid #ccc;
+            border-radius: 6px; padding: 10px; height: 300px; overflow-y: scroll; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>📊 Bot Dashboard</h2>
+  <p>Status: {% if running %}🟢 Running{% else %}🔴 Stopped{% endif %}</p>
+  <p>Keyword: <b>{{ keyword }}</b></p>
+  <p>Delay: <b>{{ delay }} sec</b></p>
+
+  <form method="POST">
+    <input type="text" name="custom_message" placeholder="Enter custom message"><br>
+    <button type="submit" name="send_message">Send Message</button><br><br>
+    <button type="submit" name="stop" class="stop">Stop Bot</button>
+  </form>
+
+  <h3>📜 Live Logs</h3>
+  <div id="logs"></div>
+</body>
+</html>
